@@ -2,11 +2,16 @@ import { useEffect, useState } from "react";
 import { Header } from "../../components/Header";
 import { TopBar } from "../../components/Header/TopBar";
 import { MainContent } from "../../components/MainContent";
+
+import { useUser } from '../../hooks/useUser'
+
 import api from "../../services/api";
 
 import { Button, ImagesPhone, Input, PersonalizeBox, Product, ProductsList } from "./styles";
 
 export function Dashboard() {
+  const {host, token} = useUser()
+
   const [models, setModels] = useState([])
   const [products, setProducts] = useState([])
   const [imageBackground, setImageBackground] = useState(0)
@@ -24,9 +29,9 @@ export function Dashboard() {
   }
 
   useEffect(() => {
-    api.defaults.headers.authorization = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibWFuYWdlciI6dHJ1ZSwiaWF0IjoxNjE3Mzg2OTcwLCJleHAiOjE2MTc5OTE3NzB9.7mgIVGLdY16EYXFEu6rrx1-ciBEFjmxBvqAUTJlWThs`;
+    // api.defaults.headers.authorization = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibWFuYWdlciI6dHJ1ZSwiaWF0IjoxNjE3Mzg2OTcwLCJleHAiOjE2MTc5OTE3NzB9.7mgIVGLdY16EYXFEu6rrx1-ciBEFjmxBvqAUTJlWThs`;
     loadMarks();
-  }, [])
+  }, [token])
 
   async function updateModels(){
     try {
@@ -39,9 +44,9 @@ export function Dashboard() {
   }
 
   useEffect(() => {
-    api.defaults.headers.authorization = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibWFuYWdlciI6dHJ1ZSwiaWF0IjoxNjE3Mzg2OTcwLCJleHAiOjE2MTc5OTE3NzB9.7mgIVGLdY16EYXFEu6rrx1-ciBEFjmxBvqAUTJlWThs`;
+    // api.defaults.headers.authorization = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibWFuYWdlciI6dHJ1ZSwiaWF0IjoxNjE3Mzg2OTcwLCJleHAiOjE2MTc5OTE3NzB9.7mgIVGLdY16EYXFEu6rrx1-ciBEFjmxBvqAUTJlWThs`;
     updateModels();
-  }, [ modelSelect ])
+  }, [ modelSelect,token ])
 
   return (
     <>
@@ -74,8 +79,8 @@ export function Dashboard() {
                 <Product key={product.id} to={`/category/${product.category.name}/product/${product.id}`}>
                   <ImagesPhone>
                     <div>
-                      <img src={`http://voucolar.bestapp.com.br:8002/files/${product.image}`} alt={product.name} />
-                      <img src={`http://voucolar.bestapp.com.br:8002/files/${imageBackground}`} alt=""/>
+                      <img src={`${host}/files/${product.image}`} alt={product.name} />
+                      <img src={`${host}/files/${imageBackground}`} alt=""/>
                     </div>
                   </ImagesPhone>
 

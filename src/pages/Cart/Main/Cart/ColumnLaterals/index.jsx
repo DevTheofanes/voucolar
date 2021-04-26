@@ -9,6 +9,7 @@ import {
 
 import { useCart } from '../../../../../hooks/useCart';
 import { calculateFrete } from '../../../../../utils/correios';
+import history from '../../../../../services/history';
 
 export function ColumnLaterals() {
   const { total } = useCart()
@@ -50,6 +51,10 @@ export function ColumnLaterals() {
     }
 
     await calculateFrete({cep: cep, option: option}, setValueFrete, setDaysFrete)
+  }
+
+  function handleNext(){
+    history.push("/shopDetails")
   }
 
   return (
@@ -125,7 +130,7 @@ export function ColumnLaterals() {
         </strong>
       </Item>
 
-      <ButtonNext>
+      <ButtonNext onClick={() => handleNext()}>
         FECHAR COMPRA
       </ButtonNext>
     </Container>

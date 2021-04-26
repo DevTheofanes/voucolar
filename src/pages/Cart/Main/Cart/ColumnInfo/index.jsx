@@ -1,6 +1,7 @@
 import React from 'react';
 import { More } from '../../../../../components/MoreMinus';
 import { useCart } from '../../../../../hooks/useCart';
+import { useUser } from '../../../../../hooks/useUser';
 
 import {
   ColInfo,
@@ -19,6 +20,7 @@ import {
 } from './styles';
 
 function ColumnInfo() {
+  const {host} = useUser()
   const { cart, removeToCart, incrementToCart, decrementToCart } = useCart()
 
   return (
@@ -45,8 +47,8 @@ function ColumnInfo() {
                           
                         <ImagesPhone>
                           <div>
-                            <img src={`http://localhost:3333/files/${item.image}`} alt={item.name} />
-                            <img src={`http://localhost:3333/files/${item.background}`} alt=""/>
+                            <img src={`${host}/files/${item.image}`} alt={item.name} />
+                            <img src={`${host}/files/${item.background}`} alt=""/>
                           </div>
                         </ImagesPhone>
                         </ProductThumbnail>

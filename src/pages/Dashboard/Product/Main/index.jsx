@@ -26,9 +26,11 @@ import { More } from '../../../../components/MoreMinus';
 
 import FooterProduct from './Footer'
 import { useCart } from '../../../../hooks/useCart';
+import { useUser } from '../../../../hooks/useUser';
 
 
 function Main(props) {
+  const { token, host } = useUser();
   const { addToCart } = useCart();
 
   const [imageBackground, setImageBackground] = useState(0);
@@ -73,9 +75,9 @@ function Main(props) {
   }
 
   useEffect(() => {
-    api.defaults.headers.authorization = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibWFuYWdlciI6dHJ1ZSwiaWF0IjoxNjE3Mzg2OTcwLCJleHAiOjE2MTc5OTE3NzB9.7mgIVGLdY16EYXFEu6rrx1-ciBEFjmxBvqAUTJlWThs`;
+    // api.defaults.headers.authorization = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibWFuYWdlciI6dHJ1ZSwiaWF0IjoxNjE3Mzg2OTcwLCJleHAiOjE2MTc5OTE3NzB9.7mgIVGLdY16EYXFEu6rrx1-ciBEFjmxBvqAUTJlWThs`;
     loadModels();
-  }, [])
+  }, [token])
 
   useEffect(() => {
     for (const key in models) {
@@ -104,12 +106,12 @@ function Main(props) {
                       imageBackground ? (
                         <ImagesPhone>
                           <div>
-                            <img src={`http://voucolar.bestapp.com.br:8002/files/${product.image}`} alt={product.name} />
-                            <img src={`http://voucolar.bestapp.com.br:8002/files/${imageBackground}`} alt=""/>
+                            <img src={`${host}/files/${product.image}`} alt={product.name} />
+                            <img src={`${host}/files/${imageBackground}`} alt=""/>
                           </div>
                         </ImagesPhone>
                       ) : (
-                        <img src={`http://voucolar.bestapp.com.br:8002/files/${product.image}`} alt={product.name} />
+                        <img src={`${host}/files/${product.image}`} alt={product.name} />
                       )
                     }
                   </ProductGalleryDiv>

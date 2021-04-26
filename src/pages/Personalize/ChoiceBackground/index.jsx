@@ -6,7 +6,10 @@ import { ProgressBarHeader } from '../_layout/ProgressBar';
 
 import api from '../../../services/api'
 
+import {useUser} from "../../../hooks/useUser"
+
 export const PersonalizeBackground = () => {
+  const { host, token } = useUser()
   const [backgrounds, setBackgrounds] = useState([])
 
   async function loadBackgrounds(){
@@ -16,9 +19,9 @@ export const PersonalizeBackground = () => {
   }
 
   useEffect(() => {
-    api.defaults.headers.authorization = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibWFuYWdlciI6dHJ1ZSwiaWF0IjoxNjE3Mzg2OTcwLCJleHAiOjE2MTc5OTE3NzB9.7mgIVGLdY16EYXFEu6rrx1-ciBEFjmxBvqAUTJlWThs`;
+    // api.defaults.headers.authorization = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibWFuYWdlciI6dHJ1ZSwiaWF0IjoxNjE3Mzg2OTcwLCJleHAiOjE2MTc5OTE3NzB9.7mgIVGLdY16EYXFEu6rrx1-ciBEFjmxBvqAUTJlWThs`;
     loadBackgrounds();
-  }, [])
+  }, [token])
 
   return (
     <Container buttonContent="Seguinte" to="/personalize/image">
@@ -37,7 +40,7 @@ export const PersonalizeBackground = () => {
               backgrounds.map( background =>{
                 return(
                   <Option key={background.id}>
-                    <img src={`http://voucolar.bestapp.com.br:8002/files/${background.image}`} alt="Phone"/>
+                    <img src={`${host}/files/${background.image}`} alt="Phone"/>
                   </Option>
                 )
               })

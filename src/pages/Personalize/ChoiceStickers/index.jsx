@@ -4,9 +4,12 @@ import { PersonalizeContent, Preview, ChoiceOptions, Option } from '../_layout/s
 import { PersonalizeLayout as Container } from '../_layout/Layout';
 import { ProgressBarHeader } from '../_layout/ProgressBar';
 
+import { useUser } from '../../../hooks/useUser'
+
 import api from '../../../services/api'
 
 export const PersonalizeStickers = () => {
+  const { host, token } = useUser()
   const [stickers, setStickers] = useState([])
 
   async function loadStickers(){
@@ -16,9 +19,9 @@ export const PersonalizeStickers = () => {
   }
 
   useEffect(() => {
-    api.defaults.headers.authorization = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibWFuYWdlciI6dHJ1ZSwiaWF0IjoxNjE3Mzg2OTcwLCJleHAiOjE2MTc5OTE3NzB9.7mgIVGLdY16EYXFEu6rrx1-ciBEFjmxBvqAUTJlWThs`;
+    // api.defaults.headers.authorization = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibWFuYWdlciI6dHJ1ZSwiaWF0IjoxNjE3Mzg2OTcwLCJleHAiOjE2MTc5OTE3NzB9.7mgIVGLdY16EYXFEu6rrx1-ciBEFjmxBvqAUTJlWThs`;
     loadStickers();
-  }, [])
+  }, [token])
 
   return (
     <Container buttonContent="Seguinte" to="/personalize/text">
@@ -37,7 +40,7 @@ export const PersonalizeStickers = () => {
               stickers.map(sticker =>{
                 return(
                   <Option key={sticker.id}>
-                    <img className="stickers" src={`http://voucolar.bestapp.com.br:8002/files/${sticker.image}`} alt="Phone"/>
+                    <img className="stickers" src={`${host}/files/${sticker.image}`} alt="Phone"/>
                   </Option>
                 )
               })

@@ -12,7 +12,7 @@ import { NewProduct } from './Modal/NewProduct';
 
 
 export const AcessProducts = (props) => {
-  const { token } = useUser()
+  const { token, host } = useUser()
 
   const [products, setProducts] = useState([])
   const [productData, setProductData] = useState([])
@@ -69,7 +69,7 @@ export const AcessProducts = (props) => {
             return (
               <GridRow key={product.id}>
                 <span>{product.id}</span>
-                <img src={`http://voucolar.bestapp.com.br:8002/files/${product.image}`} alt={product.name} />
+                <img src={`${host}/files/${product.image}`} alt={product.name} />
                 <span>{product.name}</span>
                 <div>
                   <button type="button" onClick={() => handleOpenEditProductModal(product)}>

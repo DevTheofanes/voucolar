@@ -6,6 +6,9 @@ import { history } from "../services/history";
 const UserContext = createContext([]);
 
 export function UserContextProvider({children}){
+  const host = "https://server.voucolar.com.br:8002"
+  // const host = "http://127.0.0.1:3333"
+
   const [user, setUser] = useState({})
   const [token, setToken] = useState("")
   const [manager, setManager] = useState(false)
@@ -77,7 +80,7 @@ export function UserContextProvider({children}){
   }
 
   return (
-    <UserContext.Provider value={{ user, token, manager, handleSession, handleRegister, LogoutSession }}>
+    <UserContext.Provider value={{ host, user, token, manager, handleSession, handleRegister, LogoutSession }}>
       {children}
     </UserContext.Provider>
   )

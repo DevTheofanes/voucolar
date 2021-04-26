@@ -11,7 +11,7 @@ import { EditUpload } from './Modal/EditUpload'
 import { NewBackground } from './Modal/NewBackground'
 
 export function AcessBackground() {
-  const { token } = useUser();
+  const { token, host } = useUser();
 
   const [background, setBackground] = useState([])
   const [asset, setAsset] = useState({})
@@ -66,7 +66,7 @@ export function AcessBackground() {
             return (
               <GridRow key={figure.id}>
                 <span>{figure.id}</span>
-                <img src={`http://voucolar.bestapp.com.br:8002/files/${figure.image}`} alt={figure.name} />
+                <img src={`${host}/files/${figure.image}`} alt={figure.name} />
                 <span>{figure.name}</span>
                 <div>
                   <button type="button" onClick={() => handleOpenUpdateBackgroundModal(figure)}>

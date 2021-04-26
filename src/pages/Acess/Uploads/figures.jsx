@@ -12,7 +12,7 @@ import { EditUpload } from './Modal/EditUpload'
 import { NewFigures } from './Modal/NewFigures'
 
 export function AcessFigures() {
-  const { token } = useUser()
+  const { token, host } = useUser()
 
   const [figures, setFigures] = useState([])
   const [asset, setAsset] = useState({})
@@ -67,7 +67,7 @@ export function AcessFigures() {
             return (
               <GridRow key={figure.id}>
                 <span>{figure.id}</span>
-                <img src={`http://voucolar.bestapp.com.br:8002/files/${figure.image}`} alt={figure.name} />
+                <img src={`${host}/files/${figure.image}`} alt={figure.name} />
                 <span>{figure.name}</span>
                 <div>
                   <button type="button" onClick={() => handleOpenUpdateFiguresModal(figure)}>

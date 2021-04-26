@@ -9,8 +9,11 @@ import Main from './Main'
 
 import api from '../../../services/api';
 
+import {useUser} from '../../../hooks/useUser'
 
 export function Product() {
+  const {token} = useUser()
+
   const { name: category, id} = useParams();
   const [ product, setProduct ] = useState([]);
   const [ categoryId, setCategoryId ] = useState("");
@@ -23,10 +26,10 @@ export function Product() {
   }
 
   useEffect(() => {
-    api.defaults.headers.authorization = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibWFuYWdlciI6dHJ1ZSwiaWF0IjoxNjE3Mzg2OTcwLCJleHAiOjE2MTc5OTE3NzB9.7mgIVGLdY16EYXFEu6rrx1-ciBEFjmxBvqAUTJlWThs`;
+    // api.defaults.headers.authorization = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibWFuYWdlciI6dHJ1ZSwiaWF0IjoxNjE3Mzg2OTcwLCJleHAiOjE2MTc5OTE3NzB9.7mgIVGLdY16EYXFEu6rrx1-ciBEFjmxBvqAUTJlWThs`;
     
     loadProduct()
-  }, [])
+  }, [token])
 
   return (
     <>

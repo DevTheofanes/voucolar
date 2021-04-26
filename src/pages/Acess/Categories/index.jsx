@@ -10,7 +10,7 @@ import { CategoriesContainer, CategoryItem } from './styles';
 import { NewCategory } from './Modal/NewCategory';
 
 export function AcessCategories() {
-  const { token } = useUser()
+  const { token, host } = useUser()
 
   const [categories, setCategories] = useState([])
   const [isNewCategoryOpen, setIsNewCategoryOpen] = useState(false)
@@ -42,7 +42,7 @@ export function AcessCategories() {
         { categories.map(category => {
           return (
             <CategoryItem key={category.id} to={`/acess/category/${category.id}`}>
-              <img src={`http://voucolar.bestapp.com.br:8002/files/${category.image}`} alt={category.name}/>
+              <img src={`${host}/files/${category.image}`} alt={category.name}/>
               <span>{category.name}</span>
             </CategoryItem>
           )

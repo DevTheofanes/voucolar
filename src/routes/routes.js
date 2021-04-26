@@ -16,6 +16,7 @@ import { InfosWho } from '../pages/Dashboard/Infos/Who';
 import { InfosPresent } from '../pages/Dashboard/Infos/Present';
 
 import { Cart } from '../pages/Cart';
+import { DetailsCartPage } from '../pages/Cart/DetailsPage';
 
 import { UserData } from '../pages/User';
 import { SignIn } from '../pages/User/SignIn';
@@ -40,6 +41,7 @@ export function Routes() {
         <Route path="/category/:name/product/:id" exact component={Product}/>
 
         <Route path="/cart" component={Cart}/>
+        <Route path="/shopDetails" component={DetailsCartPage}/>
 
         <Route path="/user" exact component={UserData}/>
         <Route path="/user/login" component={SignIn}/>

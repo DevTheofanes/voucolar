@@ -12,7 +12,7 @@ import { EditMark } from './Modal/EditMark';
 import { DeleteMark } from './Modal/DeleteMark';
 
 export function AcessMarks() {
-  const { token } = useUser()
+  const { token, host } = useUser()
 
   const [marks, setMarks] = useState([])
   const [mark, setMark] = useState({})
@@ -71,7 +71,7 @@ export function AcessMarks() {
             return (
               <GridRow key={mark.id}>
                 <span>{mark.id}</span>
-                <img src={`http://voucolar.bestapp.com.br:8002/files/${mark.image}`} alt={mark.name} />
+                <img src={`${host}/files/${mark.image}`} alt={mark.name} />
                 <span>{mark.name}</span>
                 <div>
                   <button type="button" onClick={() => handleOpenUpdateMarkModal(mark)}>

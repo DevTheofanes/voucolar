@@ -13,7 +13,7 @@ import { EditModel } from './Modal/EditModel';
 
 
 export function AcessModels() {
-  const { token } = useUser();
+  const { token, host } = useUser();
 
   const [models, setModels] = useState([])
   const [model, setModel] = useState({})
@@ -69,7 +69,7 @@ export function AcessModels() {
             return (
               <GridRow key={model.id}>
                 <span>{model.id}</span>
-                <img src={`http://voucolar.bestapp.com.br:8002/files/${model.image}`} alt={model.name} />
+                <img src={`${host}/files/${model.image}`} alt={model.name} />
                 <span>{model.name}</span>
                 <span>{model.description}</span>
                 <div>
