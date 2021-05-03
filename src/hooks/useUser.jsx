@@ -6,7 +6,7 @@ import { history } from "../services/history";
 const UserContext = createContext([]);
 
 export function UserContextProvider({children}){
-  const host = "https://server.voucolar.com.br:8002"
+  const host = "http://voucolar.bestapp.com.br:8002"
   // const host = "http://127.0.0.1:3333"
 
   const [user, setUser] = useState({})
@@ -32,20 +32,22 @@ export function UserContextProvider({children}){
     // api.defaults.headers.authorization = `Bearer ${tokenData}`;
   }, [])
 
-  async function handleSession(data){
+  async function handleSession(data,){
     try {
       const response = await api.post('/session', data)
       toast.success(`Seja bem-vindo ${response.data.user.name}`)
 
       setUser(response.data.user)
       setToken(response.data.token)
+      
+      localStorage.setItem('@voucolar/user', JSON.stringify(response.data.user));
+      localStorage.setItem('@voucolar/token', JSON.stringify(String(response.data.token)));
 
       if(response.data.user.manager){
         setManager(true)
+        return history.push("/acess/dashboard")
       }
 
-      localStorage.setItem('@voucolar/user', JSON.stringify(response.data.user));
-      localStorage.setItem('@voucolar/token', JSON.stringify(String(response.data.token)));
 
       history.push("/");
     } catch (error) {

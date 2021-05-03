@@ -3,21 +3,21 @@ import { FiChevronRight } from 'react-icons/fi';
 
 import { TitleComponent, TitleInner, FlexCol, Breadcrumbs, LinkRoute } from './styles';
 
-function Title() {
+function Title({active}) {
   return (
     <TitleComponent>
       <TitleInner>
         <FlexCol>
           <Breadcrumbs>
-            <LinkRoute active>Carrinho de compras</LinkRoute>
+            <LinkRoute to="/cart" active={active === "Initial" ? true : false}>Carrinho de compras</LinkRoute>
             <span>
               <FiChevronRight size={18} color="#ccc"/>
             </span>
-            <LinkRoute>Detalhes da compra</LinkRoute>
+            <LinkRoute to="/shopDetails" active={active === "Details" ? true : false}>Detalhes da compra</LinkRoute>
             <span>
               <FiChevronRight size={18} color="#ccc"/>
             </span>
-            <LinkRoute>Pedido completo</LinkRoute>
+            <LinkRoute to="/shopDetails" active={active === "End" ? true : false}>Pedido completo</LinkRoute>
           </Breadcrumbs>
         </FlexCol>
       </TitleInner>

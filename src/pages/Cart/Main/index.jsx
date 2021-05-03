@@ -7,7 +7,7 @@ import Cart from './Cart/index.jsx';
 function Main() {
   return (
     <MainComponent>
-      <Title />
+      <Title active="Initial"/>
       <Cart />
     </MainComponent>
   );

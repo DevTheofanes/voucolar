@@ -12,6 +12,7 @@ import { AcessUsers } from '../pages/Acess/Users';
 import { AcessPersonalize } from '../pages/Acess/Personalize';
 import { AcessBackground } from '../pages/Acess/Uploads/background';
 import { AcessFigures } from '../pages/Acess/Uploads/figures';
+import { AcessLogin } from '../pages/Acess/Login';
 
 export function AcessRoutes() {
   const { manager } = useUser()
@@ -32,7 +33,7 @@ export function AcessRoutes() {
           <Route path="/acess/background" exact component={AcessBackground} />
           <Route path="/acess/figures" exact component={AcessFigures} />
         </>
-        ) : null
+        ) : <Route path="/acess" exact component={AcessLogin} />
       }
     </Switch>
   );

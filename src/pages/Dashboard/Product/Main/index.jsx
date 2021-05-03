@@ -34,6 +34,7 @@ function Main(props) {
   const { addToCart } = useCart();
 
   const [imageBackground, setImageBackground] = useState(0);
+  const [nameMark, setNameMark] = useState(0);
   const [amount, setAmount] = useState(1);
 
   const product = props.product;
@@ -60,6 +61,7 @@ function Main(props) {
     addToCart({
       ...product,
       background: imageBackground,
+      nameMark,
       amount
     })
 
@@ -70,6 +72,7 @@ function Main(props) {
     const { data } = await api.get(`/models`)
 
     setImageBackground(data[data.length - 1].image)
+    setNameMark(data[data.length - 1].name)
     setModelSelect(data[data.length - 1].id)
     setModels(data)
   }
@@ -84,7 +87,7 @@ function Main(props) {
       if (Object.hasOwnProperty.call(models, key)) {
         const element = models[key];
         if(element.id === Number(modelSelect)){
-         
+          setNameMark(element.name)
           setImageBackground(element.image)
         }
       }

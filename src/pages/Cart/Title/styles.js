@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const TitleComponent = styled.div`
   position: relative;
@@ -43,7 +44,7 @@ export const Breadcrumbs = styled.nav`
 `;
   
 
-export const LinkRoute = styled.strong`
+export const LinkRoute = styled(Link)`
   @import url('https://fonts.googleapis.com/css2?family=Slabo+27px&display=swap');
 
   color: ${props => props.active ? "#333" : "#ccc"};

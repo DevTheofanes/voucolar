@@ -2,7 +2,7 @@ import Modal from 'react-modal'
 import { MdClose } from "react-icons/md";
 import { Container, HeaderModal } from './styles';
 
-export function FormModal({isOpen, onRequestClose, title, children}) {
+export function FormModal({isOpen, onRequestClose, title, subTitle, children}) {
   return (
     <Modal
       isOpen={isOpen}
@@ -19,8 +19,11 @@ export function FormModal({isOpen, onRequestClose, title, children}) {
       </button>
         
       <Container>
-        <HeaderModal>
+        <HeaderModal statusColor={subTitle ? subTitle === "Pagamento efetuado" ? "#00a400" : "#ffba00" : null}>
           <h2>{title}</h2>
+          {
+            subTitle ? <h4>{subTitle}</h4> : null
+          }
         </HeaderModal>
 
         {children}

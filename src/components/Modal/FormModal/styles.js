@@ -59,6 +59,19 @@ export const HeaderModal = styled.div`
         margin-bottom: 0.4rem;
         font-size: 1.5rem;
     }
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    h4{
+        margin-bottom: 0.4rem;
+        font-size: 0.8rem;
+        color: #fff;
+        border-radius: 0.5rem;
+        padding: 0.25rem;
+        background-color: ${props => props.statusColor ? props.statusColor : "#000"};
+    }
     
 `;
 
