@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const api = axios.create({
-  baseURL: "https://server.voucolar.com.br:8002/",
+  baseURL: "http://localhost:3333/",
 });
 
 export default api;

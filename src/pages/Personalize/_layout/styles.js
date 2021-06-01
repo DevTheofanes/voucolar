@@ -58,7 +58,7 @@ export const Content = styled.div`
   padding: 0 6rem;
 `;
 
-export const ButtonNext = styled(Link)`
+export const ButtonNext = styled.div`
   display: flex;
   justify-content: flex-end;
   
@@ -75,6 +75,25 @@ export const ButtonNext = styled(Link)`
     border: 0;
   }
 `;
+
+export const ButtonNextLink = styled(Link)`
+  display: flex;
+  justify-content: flex-end;
+  
+  button{
+    padding: 0.75rem 1.5rem;
+    text-align: center;
+    max-width: 9rem;
+    background-color:#9D3DBF;
+    font-size: 1.125rem;
+    color: #fff;
+    text-transform: uppercase;
+    border-radius: 0.25rem;
+    font-weight: 500;
+    border: 0;
+  }
+`;
+
 
 export const ProgressBar = styled.div`
   display: flex;
@@ -110,6 +129,11 @@ export const PersonalizeContent = styled.div`
 
 export const Preview = styled.div`
   img{
+    position: absolute;
+    /* top: 0; */
+    /* width: 20rem;
+    height: 36.25rem; */
+    width: 13.5rem;
     height: 24rem;
   }
 `;

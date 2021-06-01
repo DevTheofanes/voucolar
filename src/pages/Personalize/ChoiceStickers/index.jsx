@@ -8,7 +8,10 @@ import { useUser } from '../../../hooks/useUser'
 
 import api from '../../../services/api'
 
-export const PersonalizeStickers = () => {
+export const PersonalizeStickers = (props) => {
+  const phone = props.match.params.phone;
+  const fundo = props.match.params.fundo;
+
   const { host, token } = useUser()
   const [stickers, setStickers] = useState([])
 
@@ -29,7 +32,8 @@ export const PersonalizeStickers = () => {
 
       <PersonalizeContent>
         <Preview>
-          <img src="https://voucolar.com.br/wp-content/uploads/2019/11/Fundo-IPHONE-X-2.jpg" alt="Phone"/>
+          <img src={`${host}/files/${fundo}`} alt=""/> 
+          <img src={`${host}/files/${phone}`} alt="Modelo de celular" />
         </Preview>
 
         <ChoiceOptions>

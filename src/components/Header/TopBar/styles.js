@@ -37,6 +37,11 @@ export const TextLink = styled(Link)`
   text-decoration: none;
   color: #fff;
   font-weight: 200;
+
+  
+  @media (max-width:600px){
+    font-size: 0.6rem;
+  }
 `;
 
 export const Button = styled.button`
@@ -55,5 +60,11 @@ export const Button = styled.button`
     font-weight: 200;
     color: #fff;
     font-size: 1rem;
+  }
+
+  @media (max-width:600px){
+    span{
+      font-size: 0.6rem;
+    }
   }
 `;

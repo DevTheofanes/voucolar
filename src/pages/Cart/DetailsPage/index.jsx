@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useHistory } from "react-router-dom";
 
 import { NewHeader } from '../../../components/NewHeader';
 
@@ -16,6 +17,7 @@ import { calculateFrete } from '../../../utils/correios';
 export function DetailsCartPage() {
   const { user } = useUser()
   const { cart, total } = useCart()
+  let history = useHistory();
   
   const [ name, setName] = useState("")
   const [ surname, setSurname] = useState("")  
@@ -33,8 +35,8 @@ export function DetailsCartPage() {
   const [ phone, setPhone] = useState("")
   const [ comments, setComments] = useState("")
 
-  const [ addressId, setAddressId] = useState("")
-  const [ addressIdDelivery, setAddressIdDelivery] = useState("")
+  const [ addressId, setAddressId] = useState("1")
+  const [ addressIdDelivery, setAddressIdDelivery] = useState("1")
   const [ otherAddressVisible, setOtherAddressVisible] = useState(false)
   
   const [ cepDelivery, setCepDelivery ] = useState("")
@@ -129,6 +131,7 @@ export function DetailsCartPage() {
     try {
       const response = await api.post(`/users/${user.id}/orders`, {addressId, addressIdDelivery: addressIdDelivery ? addressIdDelivery : addressId, productsIds, frete, subTotal: total, total: total + 0, comments: comments ? comments : "Vazio" })
       console.log(response.data)
+      history.push("/shopFinish", {order : response.data, methodPayment: typePay})
     } catch (error) {
       toast.error(error.response.data.error)
     }

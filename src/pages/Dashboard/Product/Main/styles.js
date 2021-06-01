@@ -8,16 +8,24 @@ export const Container = styled.div`
 export const RowContent = styled.div`
   margin-bottom: 0 !important;
   width: 100%;
-  display: flex;
-  flex-flow: row wrap;
+  /* display: flex; */
+  /* flex-flow: row wrap; */
   max-width: 1080px;
   margin-left: auto;
   margin-right: auto;
+
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+
+  @media (max-width:800px){
+    grid-template-columns: 1fr;
+    align-items: center;
+  }
 `;
 
 export const ProductGallery = styled.div`
   padding-bottom: 0 !important;
-  max-width: 33.33333%;
+  /* max-width: 33.33333%; */
   flex-basis: 33.33333%;
   position: relative;
   margin: 0;
@@ -69,6 +77,7 @@ export const ProductGalleryDiv = styled.div`
     }
   }
 `;
+
 
 export const ProductInfo = styled.div`
   @import url('https://fonts.googleapis.com/css2?family=Slabo+27px&display=swap');

@@ -20,6 +20,19 @@ export const PersonalizeBox = styled.div`
     -webkit-text-stroke-width: 1.8px; /* largura da borda */
     -webkit-text-stroke-color: #FD8E00;
   }
+
+
+  @media (max-width:600px){
+    width: 100% !important;
+    min-height: 9.5rem;
+
+    h1{
+      max-width: 12rem;
+      text-align: center;
+      font-size: 1.6rem;
+      -webkit-text-stroke-width: 1px; 
+    }
+  }
 `;
 
 export const Input = styled.div`
@@ -43,12 +56,23 @@ export const Input = styled.div`
       color: #c1c1c1;
     }
   }
+
+  
+  @media (max-width:600px){
+    select{
+      width: 60%;
+    }
+  }
 `;
 
 export const ProductsList = styled.div`
   box-sizing: border-box;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
+
+  @media (max-width:600px){
+    grid-template-columns: 1fr 1fr;
+  }
 `;
 
 export const Product = styled(Link)`

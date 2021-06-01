@@ -7,10 +7,14 @@ import { ProgressBarHeader } from '../_layout/ProgressBar';
 import api from '../../../services/api'
 
 import {useUser} from "../../../hooks/useUser"
+import history from '../../../services/history';
 
-export const PersonalizeBackground = () => {
+export const PersonalizeBackground = (props) => {
+  const phone = props.match.params.phone;
+  
   const { host, token } = useUser()
   const [backgrounds, setBackgrounds] = useState([])
+  const [backgroundSelected, setBackgroundSelected] = useState("ok")
 
   async function loadBackgrounds(){
     const response = await api.get(`/assets`)
@@ -20,16 +24,30 @@ export const PersonalizeBackground = () => {
 
   useEffect(() => {
     // api.defaults.headers.authorization = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibWFuYWdlciI6dHJ1ZSwiaWF0IjoxNjE3Mzg2OTcwLCJleHAiOjE2MTc5OTE3NzB9.7mgIVGLdY16EYXFEu6rrx1-ciBEFjmxBvqAUTJlWThs`;
+    
     loadBackgrounds();
   }, [token])
 
+  function handleOption(image){
+    setBackgroundSelected(image)
+  }
+
   return (
-    <Container buttonContent="Seguinte" to="/personalize/image">
+    <Container buttonContent="Seguinte" to={`/personalize/image/${phone}/${backgroundSelected}`}>
       <ProgressBarHeader active="background"/>
 
       <PersonalizeContent>
         <Preview>
-          <img src="https://voucolar.com.br/wp-content/uploads/2019/11/Fundo-IPHONE-X-2.jpg" alt="Phone"/>
+          {
+            backgroundSelected ? (
+              <>
+                <img src={`${host}/files/${backgroundSelected}`} alt=""/> 
+                <img src={`${host}/files/${phone}`} alt="Modelo de celular" />
+              </>
+            ) : (
+              <img src={`${host}/files/${phone}`} alt="Modelo de celular" />
+            )
+          }
         </Preview>
 
         <ChoiceOptions>
@@ -39,7 +57,7 @@ export const PersonalizeBackground = () => {
             {
               backgrounds.map( background =>{
                 return(
-                  <Option key={background.id}>
+                  <Option key={background.id} onClick={() => handleOption(background.image)}>
                     <img src={`${host}/files/${background.image}`} alt="Phone"/>
                   </Option>
                 )

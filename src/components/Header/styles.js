@@ -27,6 +27,16 @@ export const Container = styled.div`
 
   @media (max-width:880px){
     padding: 0 1.5rem;
+
+    img {
+      max-width: 10rem;
+    }
+  }
+
+  @media (max-width:600px){
+    img {
+      max-width: 6rem;
+    }
   }
 `;
 
@@ -37,17 +47,19 @@ export const Content = styled.div`
   width: 72%;
   margin-left: 0.5rem;
 
-  a{
-    color: #666;
-    letter-spacing: 0.0375rem;
-    font-weight: 300;
-    font-size: 0.875rem;
-    text-transform: uppercase;
+  @media (max-width:600px){
+    width: 100%;
+    margin-left: 2rem;
+    justify-content: flex-end;
   }
 `;
 
 export const Infos = styled.div`
   min-width: 30%;
+
+  @media (max-width:600px){
+    display: none;
+  }
 
   a+a{
     margin-left: 0.5rem;
@@ -57,6 +69,8 @@ export const Infos = styled.div`
 export const ActionsContainer = styled.div`
   display: flex;
   align-items: center;
+  /* justify-content: space-between;
+  width: 100%; */
 `;
 
 export const ButtonEntry = styled.button`
@@ -76,11 +90,20 @@ export const ButtonEntry = styled.button`
     font-size: 0.875rem;
     text-transform: uppercase;
   }
+
+  @media (max-width:880px){
+    padding: 0.25rem 0.5rem;
+  }
+
+  @media (max-width:600px){
+    padding: 0 0.25rem;
+  }
 `;
 
 export const ButtonCart = styled.button`
   display: flex;
   align-items: center;
+  align-self: flex-end;
   
   margin-left: 0.5rem;
   padding: 0.5rem 0.75rem;
@@ -89,10 +112,26 @@ export const ButtonCart = styled.button`
   border-radius: 1.8rem;
   background-color: transparent;
 
+  /* @media (max-width:880px){
+    padding: 0.25rem 0.5rem;
+  } */
+
   span{
     margin-left: 0.275rem;
     font-weight: 400;
     font-size: 0.875rem;
     color: #c2c2c2;
+  }
+
+  @media (max-width:600px){
+    padding: 0.25 0.5rem;
+
+    a{
+      font-size: 0.75rem;
+      color: #777;
+      font-weight: 400;
+      font-size: 0.875rem;
+      text-transform: uppercase;
+    }
   }
 `;

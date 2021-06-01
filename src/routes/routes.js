@@ -21,6 +21,7 @@ import { DetailsCartPage } from '../pages/Cart/DetailsPage';
 import { UserData } from '../pages/User';
 import { SignIn } from '../pages/User/SignIn';
 import { Register } from '../pages/User/Register';
+import { FinishBuy } from '../pages/Cart/FinishBuy';
 
 export function Routes() {
   return (
@@ -31,9 +32,9 @@ export function Routes() {
         <Route path="/infos/present" component={InfosPresent}/>
 
         <Route path="/personalize" exact component={Personalize} />
-        <Route path="/personalize/background" component={PersonalizeBackground} />
-        <Route path="/personalize/image" component={PersonalizeImage} />
-        <Route path="/personalize/stickers" component={PersonalizeStickers} />
+        <Route path="/personalize/background/:phone" component={PersonalizeBackground} />
+        <Route path="/personalize/image/:phone/:fundo" component={PersonalizeImage} />
+        <Route path="/personalize/stickers/:phone/:fundo" component={PersonalizeStickers} />
         <Route path="/personalize/text" component={PersonalizeText} />
         <Route path="/personalize/full" component={PersonalizeFull} />
 
@@ -42,6 +43,7 @@ export function Routes() {
 
         <Route path="/cart" component={Cart}/>
         <Route path="/shopDetails" component={DetailsCartPage}/>
+        <Route path="/shopFinish/:id" component={FinishBuy}/>
 
         <Route path="/user" exact component={UserData}/>
         <Route path="/user/login" component={SignIn}/>

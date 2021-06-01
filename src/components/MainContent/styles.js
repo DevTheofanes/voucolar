@@ -25,6 +25,10 @@ export const Container = styled.div`
   @media (max-width:880px){
     padding: 0 1.5rem;
   }
+
+  @media (max-width:600px){
+    flex-direction: column;
+  }
 `;
 
 
@@ -32,6 +36,10 @@ export const CategoriesBox = styled.div`
   width: 16%;
   margin-top: 1.875rem;
   margin-right: 2rem;
+
+  @media (max-width:600px){
+    display: none;
+  }
 
   h1{
     color: #707070;
@@ -53,9 +61,41 @@ export const CategoriesBox = styled.div`
   }
 `;
 
+export const CategoriesBoxForPhone = styled.div`
+  display: none;
+
+  @media (max-width:600px){
+    display: block;
+  }
+
+  select{
+    width: 36%;
+    padding: 0 0.5rem;
+    height: 2rem;
+    border-radius: 0.25rem;
+       
+    border: 1px solid #c1c1c1;
+    background-color: var(--shape);
+    font-weight:400;
+    font-size: 1rem; 
+        
+    &::placeholder{
+      color: #c1c1c1;
+    }
+  }
+
+  margin-bottom: 1rem;
+`;
+
 export const Content = styled.div`
   width: 84%;
   height: 100vh;
   display: flex;
   flex-direction: column;
+  /* justify-content: center; */
+
+  @media (max-width:600px){
+    width: 100%;
+  /* align-items: center; */
+  }
 `;
